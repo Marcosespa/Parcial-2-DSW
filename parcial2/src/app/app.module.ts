@@ -1,9 +1,10 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, provideClientHydration } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { PinguinosModule } from './pinguinos/pinguinos.module';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -12,9 +13,13 @@ import { PinguinosModule } from './pinguinos/pinguinos.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    PinguinosModule
+    PinguinosModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [
+    provideClientHydration()
+
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
