@@ -9,18 +9,27 @@ import { PinguinoService } from '../pinguino.service';
 })
 export class PinguinosListComponent implements OnInit {
   pinguinos: Array<Pinguino> = [];
+  pinguinoMayorDistribucion: string = "";
+
+  selectedPinguino!: Pinguino;
+  selected = false;
+
+
+
   constructor(private pinguinoService: PinguinoService) { }
 
+  onSelected(pinguino: Pinguino): void {
+    this.selected = true;
+    this.selectedPinguino = pinguino;
+  }
   getPinguinos(): void {
     this.pinguinoService.getPinguinos().subscribe((pinguinos) => {
       this.pinguinos = pinguinos;
     });
   }
 
-
   ngOnInit() {
     this.getPinguinos();
 
   }
-
 }

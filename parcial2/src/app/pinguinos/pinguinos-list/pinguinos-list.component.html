@@ -1,14 +1,54 @@
-<div class="container-fluid">
-  <div class="row">
-    <div class="col mb-2" *ngFor="let book of pinguinos">
-      <div class="card p-2" style="width: 15rem; height: 33rem">
-        <div class="card-body">
-          <h5 class="card-title">{{ book.name }}</h5>
-          <p class="card-text">[{{ book.description }}]</p>
-        </div>
-      </div>
-    </div>
-  </div>
+<div *ngIf="selected">
+  <app-pinguinos-detail [pinguinoDetail]="selectedPinguino"></app-pinguinos-detail>
 </div>
 
+<head>
+    <title>Especies de Pinguinos</title>
+    <style>
 
+        .header {
+            display: flex;
+            align-items: center;
+            background-color: #b0e0e6;
+            padding: 10px;
+            border-radius: 10px 10px 0 0;
+        }
+    </style>
+</head>
+<body>
+        <div class="header">
+            <h1>Especies de Pingüinos</h1>
+        </div>
+        <table class="table caption-top">
+
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Nombre</th>
+              <th scope="col">Nombre Cientifico</th>
+              <th scope="col">Alimentacion</th>
+              <th scope="col">Distribucion mundial</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="table-secondary" *ngFor="let c of pinguinos">
+                <td>
+                  <dd>{{c.id}}</dd>
+                </td>
+                <td (click)="onSelected(c)">
+                  <dd class="link-like" style="color: blue;">{{ c.name }}</dd>
+                </td>
+                <td>
+                  <dd>{{c.scientific_name}}</dd>
+                </td>
+                <td>
+                  <dd>{{c.feeding}}</dd>
+                </td>
+                <td>
+                  <dd>{{c.global_distribution}}</dd>
+                </td>
+            </tr>
+          </tbody>
+        </table>
+
+</body>
