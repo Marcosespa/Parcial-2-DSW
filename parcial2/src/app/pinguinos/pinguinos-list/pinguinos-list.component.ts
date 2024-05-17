@@ -9,7 +9,6 @@ import { PinguinoService } from '../pinguino.service';
 })
 export class PinguinosListComponent implements OnInit {
   pinguinos: Array<Pinguino> = [];
-  pinguinoMayorDistribucion: string = "";
 
   selectedPinguino!: Pinguino;
   selected = false;
@@ -32,4 +31,6 @@ export class PinguinosListComponent implements OnInit {
     this.getPinguinos();
 
   }
+
+
 }
